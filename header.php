@@ -61,6 +61,8 @@
           
           <li><a href="index.php?status=1"><span class="glyphicon glyphicon-cloud"></span> Status</a></li>
           <li><a href="index.php?status=2"><span class="glyphicon glyphicon-signal"></span> Laporan</a></li>
+          <li><a href="index.php?status=5"><span class="glyphicon glyphicon-signal"></span> Laporan Ulson</a></li>
+          <li><a href="index.php?status=6"><span class="glyphicon glyphicon-signal"></span> Laporan Peer</a></li>
 
           <!-- Dropdown-->
           

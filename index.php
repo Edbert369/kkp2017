@@ -30,6 +30,16 @@
                                 break;
                             
 
+                            case '5':
+                                include 'laporan_ulson.php';
+                                break;
+                            
+
+                            case '6':
+                                include 'laporan_peer.php';
+                                break;
+                            
+
                             case '3':
                                 $status_sensor = mysql_fetch_array(mysql_query('SELECT * from tb_status_sensor'));
                                     if($status_sensor[1]=='1' && $status_sensor[2]=='1'){

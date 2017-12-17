@@ -33,12 +33,20 @@
           
 
         echo "<br>";
+
+
         // kalo 0 ga bakalan masuk ke database
         if($status_sensor2[2] != '0' && $status_sensor2[1] != '0'){
 
            $new_motion_status = explode(" ", $state[1]);
            $liveStatus =  strcmp($new_motion_status[2], "Detected");// strcmp == string compare // apakah ada kata2 detected nya
            
+           
+           //REALTIME GILS
+           mysql_query("INSERT INTO `tb_gl_peer` (`id`, `time`, `status`) VALUES (NULL, CURRENT_TIMESTAMP, 'Motion Detected');");//timestamp otomatis generate waktu server
+           mysql_query("INSERT INTO `tb_gl_ulson` (`id`, `date`, `jarak`) VALUES (NULL, CURRENT_TIMESTAMP, '$int');");
+
+
            if($liveStatus == 2 && $int<$status_sensor2[3]){//livestatus == kalau ada serangan && dibawah jarak yg dikehendaki
               echo "<font class='blink'>Ada Serangan</font>";
               echo "<iframe src='http://exaid.esy.es/alert_mails.php' style='border:none; height:1px; width:1px;'></iframe>";
