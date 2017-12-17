@@ -1,5 +1,8 @@
     <?php
+
+
     include ("koneksi.php");
+
     $status_sensor2 = mysql_fetch_array(mysql_query('SELECT * from tb_status_sensor'));
 
     // error_reporting(0);
@@ -38,11 +41,13 @@
            
            if($liveStatus == 2 && $int<$status_sensor2[3]){//livestatus == kalau ada serangan && dibawah jarak yg dikehendaki
               echo "<font class='blink'>Ada Serangan</font>";
-          
+              echo "<iframe src='http://exaid.esy.es/alert_mails.php' style='border:none; height:1px; width:1px;'></iframe>";
+
               $data_penjaga = "1";
               $jaraknya = $int;
               mysql_query("INSERT INTO `tb_alert` (`id_alert`, `jarak_ke_benda`,`alert_time`, `id_penjaga`)
                VALUES (NULL, '$jaraknya' ,CURRENT_TIMESTAMP, '$data_penjaga');");//timestamp otomatis generate waktu server
+
            }else{
               echo "<font style='color:green;'>Tidak ada Serangan</font>";
            }

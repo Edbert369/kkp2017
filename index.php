@@ -31,8 +31,14 @@
                             
 
                             case '3':
-                                session_destroy();
-                                echo "<script>document.location.href='index.php?status=1'</script>";
+                                $status_sensor = mysql_fetch_array(mysql_query('SELECT * from tb_status_sensor'));
+                                    if($status_sensor[1]=='1' && $status_sensor[2]=='1'){
+                                        echo "<script>alert('Silahkan Matikan sensor Terlebih dahulu')</script>";
+                                        echo "<script>document.location.href='index.php?status=1'</script>";
+                                    }else{
+                                        session_destroy();
+                                        echo "<script>document.location.href='index.php?status=1'</script>";
+                                    }                                
                                 break;    
                         }
 
